@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=email], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+input[type=submit] {
+    width: 100%;
+    background-color: dodgerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+input[type=submit]:hover {
+    background-color: skyblue;
+}
+
+
+#signup {
+    width: 200px;
+    background-color: dodgerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+button:hover {
+    background-color: skyblue;
+}
+
+
+textarea{
+width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+
+input[type=password]{
+width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
+</style>
+	
+	
+	
+
+	
+	<title>JumpKart</title>
+
+</head>
+<body>
+<center>
+<table style="width:600px;"><tr><td>
+	<div class="box">
+		<h2>Sign Up Here</h2>
+		<form method="POST" action="http://localhost:8000/register/">
+{% csrf_token %}
+			<div class="inputbox">
+				<input type="text" name="fname" required="">
+				<label>First Name</label>
+			</div>	
+			<div class="inputbox">	
+				<input type="text" name="lname" required="">
+				<label>Last Name</label>
+			</div>
+
+			<div class="inputbox">
+			     <p><font color="red">{{error }}</font></p>
+				<input type="email" name="email" required="">
+				<label>Email </label>
+			</div>
+			
+			
+			<div class="inputbox">
+				<input type="password" name="password" required="">
+				<label>Password</label>
+			</div>	
+			
+			<input id="signup"   type="submit"  value="Sign Up">
+
+                
+		<form action ="http://localhost:8000">
+	                <a href="http://localhost:8000"><input id="signup"   value="Registered?"></a></form>
+
+		</form>
+			
+		
+		</div>
+		<div id="show" style="background-color :white">
+		
+		</div>
+</td></tr></table>
+
+</body>
+</html>

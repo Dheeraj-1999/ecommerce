@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+input[type=submit] {
+    width: 200px;
+    background-color: dodgerblue;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+table.paleBlueRows {
+  font-family: "Times New Roman", Times, serif;
+  border: 1px solid #FFFFFF;
+  width: 100%px;
+  height: 200px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.paleBlueRows td, table.paleBlueRows th {
+  border: 1px solid #FFFFFF;
+  padding: 3px 2px;
+}
+table.paleBlueRows tbody td {
+  font-size: 13px;
+}
+table.paleBlueRows tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.paleBlueRows thead {
+  background: #0B6FA4;
+  border-bottom: 5px solid #FFFFFF;
+}
+table.paleBlueRows thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #FFFFFF;
+}
+table.paleBlueRows thead th:first-child {
+  border-left: none;
+}
+
+table.paleBlueRows tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  background: #D0E4F5;
+  border-top: 3px solid #444444;
+}
+table.paleBlueRows tfoot td {
+  font-size: 14px;
+}
+
+input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+</style>
+    
+{% if sum  > 0 %}
+        <div class="cart-table-area section-padding-100">
+            <div class="container-fluid">
+			<center>
+			<table><tr><td  valign="top"  cellspacing="20">
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <div class="cart-title">
+						<br><br>
+                            <center><h1>Shopping Cart</h1>
+                        </div>
+
+                        <div class="cart-table clearfix">
+                            <table bgcolor="#f1f1f1" cellpadding="5" cellspacing="50" border="0.2">
+                                <thead>
+                                    <tr bgcolor="dodgerblue">
+                                        <th>Sr. no</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+										
+                                    </tr>
+                                </thead>
+								{%   for  i in cartitems  %}
+                                <tbody>
+                                     
+									 
+                                        <td class="cart_product_img">
+                                            <a href="#"><img src="{{i.img}}" alt="Product" height="100" width="100"></a>
+                                        </td>
+                                        <td class="cart_product_desc">
+                                            <h5>{{i.name}}</h5>
+                                        </td>
+                                        <td class="price">
+                                            <span>{{i.price}}</span>
+                                        </td>
+                                        <td class="qty">
+                                            <div class="qty-btn d-flex">
+                                                <p>Qty</p>
+                                                <div class="quantity">
+												<form id="theForm" action="http://localhost:8000/decitem/" method="POST">
+												 <input  type="hidden" value="{{i.pid}}" name="pid" >
+												 
+												{% csrf_token %}
+                                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty3'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                                    <input type="number" class="qty-text" id="mySelect" onchange="myFunction()" step="1" min="1" max="300" name="quant" value="{{i.quantity}}">
+                                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty3'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                                </div>
+												</form>
+                                            </div>
+                                        </td>
+										
+										</td>
+                                        <td >
+										    <form  action="http://localhost:8000/removeitemfromcart/" method="POST">
+											{% csrf_token %}
+                                            <input  type="hidden" value="{{i.pid}}" name="pid" >
+											
+											
+										   <input type="submit" value="remove">
+										   </form>
+                                        </td>
+                                    </tr>
+									
+                                </tbody>
+								{% endfor  %}
+                            </table>
+                        </div>
+                    </div>
+					</td><td valign="top">
+					
+                    <div class="col-12 col-lg-4">
+                        <div class="cart-summary">
+						<center>
+						<br>
+							
+                            <h2>Cart Total</h2>
+							 <table bgcolor="#eedd82" cellpadding="30" cellspacing="60">
+							 <tr><td><h3>Subtotal:</td> <td><b>{{sum}}</h3></td></tr>
+                                <tr><td><h3>Extra Tax charges:</td> <td><b>5 Rs</h3></td></tr>
+                                <tr><td><h3>Total:</td> <td><b>{{grand}}</h3></td></tr>
+                              </table>
+                           
+						
+						<form method="POST" action="http://localhost:8000/checkout/">
+						<input type="hidden" value="{{grand}}" name="price">
+						{% csrf_token %}
+                                <input type="submit" value="checkout">
+								</form>
+                            
+                        </div>
+                    </div>
+					
+					
+					{% else %} 
+					
+					 <br><br><br><center><p><h2><b>No items in the cart</b></h2> </center>
+					 
+					
+					
+					
+					{% endif %}
+					
+					
+					
+					
+					
+					</td></tr></table>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+<script>
+function myFunction() {
+    
+	
+	document.getElementById('theForm').submit()
+}
+</script>	
+    <!-- ##### Main Content Wrapper End ##### -->
+
+{%  endblock  %}

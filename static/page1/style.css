@@ -1,0 +1,110 @@
+body
+{
+	margin:0;
+	padding: 0;
+	font-family: sans-serif;
+	background:url("back.jpg");
+	background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 100%; 
+}
+.box
+{
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	width: 400px;
+	padding: 40px;
+	background:rgba(0,0,0,.8);
+	box-sizing: border-box;
+	box-shadow: 0 15px 25px rgba(0,0,0, .5);
+	border-radius: 10px;
+}
+.box h2
+{
+	margin:0 0 30px;
+	padding: 0;
+	color:#fff;
+	text-align: center;
+}
+.box .inputbox
+{
+	position: relative;
+}
+.box .inputbox input
+{
+	width: 100%;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	margin-bottom: 30px;
+	border:none;
+	border-bottom: 1px solid #fff;
+	outline: none;
+	background:transparent;
+	letter-spacing: 1px;
+}
+.box .inputbox label
+{
+	position: absolute;
+	top: 0;
+	left:0;
+	padding: 10px 0;
+	font-size: 16px;
+	color: #fff;
+	pointer-events: none;
+	transition: .5s;
+	letter-spacing: 2px;
+}
+.box .inputbox input:focus~label,
+.box .inputbox input:valid~label
+{
+	top: -20px;
+	left:0;
+	color:#03a9f4;
+	font-size: 13px;
+}
+.box input[type="submit"],
+.box input[type="button"]
+{	
+	display: inline-block;
+	background:transparent;
+	border:none;
+	outline: none;
+	color: #fff;
+	background:#03a9f4;
+	cursor: pointer;
+	padding: 10px 20px;
+	border-radius: 5px;
+	font-weight: bold;
+}
+.box input[type="submit"]:hover,
+.box input[type="Button"]:hover
+{
+box-shadow: 0 12px 16px 0 rgba(3,169,244,0.24), 0 17px 50px 0 rgba(3,169,244,0.19);
+font-size: 15px;
+}
+.box input[type="Button"]
+{
+	float: right;
+}
+input[type="button"]:focus
+{	
+ color: red;
+}
+a
+{
+	text-decoration: none;
+	color: #03a9f4;
+}
+a:hover
+{
+	font-size: 16px;
+	color:#fff;
+}
+.forgot
+{
+	padding-top: 30px;
+}

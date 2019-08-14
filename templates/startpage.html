@@ -1,0 +1,194 @@
+{%  extends "base.html" %}
+
+
+
+
+{% block content %}
+
+<style>
+
+
+.sidenav {
+    width: 200px;
+    z-index: 0;
+    top: 100px;
+    left: 0px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 0px 0;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-left: 0px;}
+    .sidenav a {font-size: 13px;}
+}
+
+.my{
+outline: none;
+  text-decoration: none;
+  display: inline-block;
+  width: 19.5%;
+  margin-right: 0%;
+  text-align: center;
+  line-height: 2;
+  color: dodgerblue;
+ 
+  }
+  
+
+</style>
+
+<table><tr><td  valign="top">
+<div class="sidenav">
+  
+  <div class="shop_sidebar_area">
+  
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget catagory mb-50">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30"><h4>&nbsp;&nbsp;Categories</H4></h6>
+
+                <!--  Catagories  -->
+                <div class="catagories-menu">
+                    <ul >
+                        <li class="active"><a href="http://localhost:8000/setCategory?cat=mobile" class="my">mobile</a></li>
+                        <li><a href="http://localhost:8000/" class="my">cloths</a></li>
+                        <li><a href="http://localhost:8000/setCategory?cat=homeProducts" class="my">homeProducts</a></li>
+                        <li><a href="http://localhost:8000/setCategory?cat=Furniture" class="my">Furniture</a></li>
+                        <li><a href="http://localhost:8000/setCategory?cat=stationary" class="my">stationary</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget brands mb-50">
+                <!-- Widget Title 
+                <h6 class="widget-title mb-30"><h4>&nbsp;&nbsp;Brands</h4></h6>
+
+                <div class="widget-desc">
+                    <!-- Single Form Check 
+					<table><tr><td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="amado">
+                        <label class="form-check-label" for="amado">Amado</label>
+                    </div>
+					</td></tr>
+					<tr><td>
+                    <!-- Single Form Check 
+                    <div class="form-check">
+                         <input class="form-check-input" type="checkbox" value="" id="ikea">
+                        <label class="form-check-label" for="ikea">Ikea</label>
+                    </div>
+					</td></tr><tr><td>
+                    <!-- Single Form Che
+                    <div class="form-check">
+                         <input class="form-check-input" type="checkbox" value="" id="furniture">
+                        <label class="form-check-label" for="furniture">Furniture Inc</label>
+                    </div>
+					</td></tr><tr><td>
+                    <!-- Single Form Check
+                    <div class="form-check">
+                         <input class="form-check-input" type="checkbox" value="" id="factory">
+                        <label class="form-check-label" for="factory">The factory</label>
+                    </div>
+					</td></tr></table>
+                </div>
+            </div>
+
+            -->
+
+            <!-- ##### Single Widget ##### -->
+            <div class="widget price mb-50">
+                <!-- Widget Title -->
+                <h6 class="widget-title mb-30"><h4>&nbsp;&nbsp;Price</h4></h6>
+
+						<br>
+                        <div class="range-price">&nbsp;10 Rs --------- 100000 Rs</div>
+						<br>
+						<input type="range" min="1" max="100" value="5" class="slider" id="myRange">
+						<br>
+						<br>
+						<p><center><button style=" background-color: #eeff41; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+	border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;">filter</button></p>
+						
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		
+
+</div>
+</center>
+</td>
+<td>
+<div class="main">
+
+<table   cellspacing="20" >
+<tr>
+{%  for   i in obj %}
+
+
+
+
+       <td  bgcolor="#E6E4E4">
+	   <center>
+      <div class="w3-card w3-round w3-white w3-center" >
+        <div class="w3-container">
+          <p><Strong>{{i.name}}</strong></p>
+          <img src={{i.img}} alt="product" style="width:30%; ">
+		  
+		  <p>price :{{i.price}}</P>
+          <p>{{i.des}}</p>
+		  <form action="http://localhost:8000/productdetail/" method="POST">
+		  <input type="hidden" value ="{{i.pid}}" name="pid" />
+        {% csrf_token %}         
+		 <p><input type="submit" value="buy" style=" background-color: #eeff41; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+	border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+	cursor:pointer;
+    font-size: 16px;"></p>
+        </div>
+		</td>
+		</form>
+		
+		
+		
+{% if forloop.counter|divisibleby:3 %}
+<tr>
+{% endif %}
+
+{% endfor %}
+
+</tr></table>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

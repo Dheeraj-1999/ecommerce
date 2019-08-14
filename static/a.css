@@ -1,0 +1,27 @@
+a:link{color:white;
+		font-size:18px;}
+input[type=text], [type=password],select {
+    color:black;
+	width: 25%;
+    padding: 10px 0px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+input[type=submit], select {
+    width: 20%;
+    padding: 10px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+body
+{background:url("w.jpg");
+}

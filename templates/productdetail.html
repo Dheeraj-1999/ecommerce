@@ -1,0 +1,103 @@
+{%  extends "base.html" %}
+{% block content %}
+
+
+<head>
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+    color: orange;
+}
+</style>
+</head>
+
+<center>
+<br><br>
+<table>
+
+<tr><td rowspan="10"><img src="{{obj.img}}" height="100" width="100"></td><td></td><td><font color="black" size="5"><strong>{{obj.name}}</strong></tr>
+<tr><td><b><font color="red" size="4">{{obj.price}}</td></tr></b>
+
+{% for  m in  rate %}
+
+<span class="fa fa-star checked"></span>
+
+{% endfor %}
+{% for  m in  unstarlist %}
+
+<span class="fa fa-star "></span>
+
+{% endfor %}
+
+
+
+
+<tr><td> {{obj.category}}</td></tr>
+<tr><td>{{ obj.specify }}</td></tr>
+<tr><td>{{ obj.des}}</td></tr>
+<tr><td>{{obj.rating}}</td></tr>
+
+<form method="POST" action="http://localhost:8000/checkout/">
+<input type="hidden" value="{{obj.price}}" name="price">
+{% csrf_token %}
+<tr><td><input type="submit" value="buy" style=" background-color: #eeff41; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+	border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+	cursor:pointer;
+    font-size: 16px;">
+</form>
+	
+	
+	
+	<form action="http://localhost:8000/addtocart/" method="POST">
+	<input type="hidden" value="{{obj.pid}}" name="pid">
+	{% csrf_token %}
+	</td><td><input type="submit" value="Add to cart" style=" background-color: #eeff41; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+	border-radius: 12px;
+    text-decoration: none;
+    display: inline-block;
+	cursor:pointer;
+    font-size: 16px;"></form></td></tr>
+	
+
+
+
+
+</table>
+<br><br><br>
+</center>
+{% if reviews|length > 0 %}
+<h2> <B>&nbsp;&nbsp;&nbsp; User  Reviews</b></h2>
+{% endif %}
+{% for  k in reviews %}
+
+<p><b>&nbsp;&nbsp;&nbsp;{{k.userid}}</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{k.rating}} <br><br>&nbsp;&nbsp;&nbsp;{{ k.des }}<br> </p><br>
+
+{% endfor %}
+
+
+
+
+{% if request.session.isuserloggedin  %}
+
+ <p> placeholder for write a  review </p>
+ 
+{% endif %}
+
+
+
+
+
+{% endblock %}
+
+
