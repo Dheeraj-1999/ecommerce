@@ -1,5 +1,7 @@
 # ecommerce
 
+## [live website](https://jumpkart.herokuapp.com/startpage/)
+
 we have to run some scripts provided by Django that will create the skeleton of a Django project for us.
 
 Directory Structure:
