@@ -46,5 +46,5 @@ It is an Ecommerce website which has features given below:
 - payment page [currently Buggy] via paypal.
 
 ## preview of website
-
+![alt text](https://github.com/Dheeraj-1999/ecommerce/blob/master/website%20Top.JPG)
 ![alt text](https://github.com/Dheeraj-1999/ecommerce/blob/master/web%20main.JPG)
