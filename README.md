@@ -43,7 +43,8 @@ It is an Ecommerce website which has features given below:
 - Buy any item or can add the item to Cart
 - If ITEM added to cart then "number of items in cart will be shown on top" .
 - Can add product to homepage by login to admin page.
+- payment page [currently Buggy] via paypal.
 
 ## preview of website
-- payment page [currently Buggy] via paypal.
-![alt text](https://github.com/Dheeraj-1999/ecommerce/web main.jpeg)
+
+![alt text](https://github.com/Dheeraj-1999/ecommerce/blob/master/web%20main.JPG)
